@@ -13,7 +13,7 @@ const DetailPage = () => {
   const { user } = UseAuth();
   const email = user.email;
   useEffect(() => {
-    fetch(`http://localhost:5000/cloth/${id}`)
+    fetch(`https://morning-retreat-22291.herokuapp.com/cloth/${id}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log("api data", data);
@@ -25,12 +25,14 @@ const DetailPage = () => {
   const handleAddToCart = () => {
     delete cloth._id;
     let status = "pending";
+    let pay = "pay";
     const data = {
       ...cloth,
       email,
       status,
+      pay,
     };
-    fetch("http://localhost:5000/orders", {
+    fetch("https://morning-retreat-22291.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,6 +73,11 @@ const DetailPage = () => {
                   Add To Cart
                 </Button>
               </Card.Body>
+              {success && (
+                <h5 style={{ color: "orange", marginLeft: "20px" }}>
+                  added cart
+                </h5>
+              )}
             </Card>
           </Col>
           <Col xs={12} md={6} lg={6}></Col>

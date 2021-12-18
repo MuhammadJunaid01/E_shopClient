@@ -1,12 +1,23 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import UseAuth from "./../../hooks/useAuth/UseAuth";
 import "./myAccount.css";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 const MyAccount = () => {
-  const { user, myorder } = UseAuth();
+  const { user } = UseAuth();
+  const [totalMyOrder, setTotalMuOrder] = useState([]);
+  const [loader, setLoader] = useState(true);
   console.log(user);
+  useEffect(() => {
+    fetch(
+      `https://morning-retreat-22291.herokuapp.com/totalMyOrder/${user.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setTotalMuOrder(data))
+      .catch((err) => console.log(err))
+      .finally(() => setLoader(false));
+  }, []);
   return (
     <div>
       <Container>
@@ -36,7 +47,7 @@ const MyAccount = () => {
             </Card>
           </Col>
           <Col xs={6} md={8} lg={8}>
-            {myorder?.map((myorder) => (
+            {totalMyOrder?.map((myorder) => (
               <Table key={myorder._id} striped bordered hover variant="dark">
                 <thead>
                   <tr>

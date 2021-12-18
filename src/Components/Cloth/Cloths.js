@@ -7,7 +7,7 @@ const Cloths = () => {
   const [mensCloths, setMensCloths] = useState([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/cloths")
+    fetch("https://morning-retreat-22291.herokuapp.com/cloths")
       .then((res) => res.json())
       .then((data) => setMensCloths(data))
       .catch((err) => console.log("mensCloth Api error", err))

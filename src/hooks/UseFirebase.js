@@ -29,6 +29,7 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState({});
   const [loader, setLoader] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState("");
   const [myorder, setMyorder] = useState([]);
   const [readMore, setReadMore] = useState(true);
@@ -41,14 +42,15 @@ const useFirebase = () => {
     return signInWithPopup(auth, googleProvider);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/myorder/${user.email}`)
+    fetch(`https://morning-retreat-22291.herokuapp.com/myorder/${user.email}`)
       .then((res) => res.json())
       .then((data) => setMyorder(data))
       .catch((err) => console.log(err))
       .finally(() => setLoader(false));
   }, [user.email]);
+
   useEffect(() => {
-    setLoader(true);
+    setIsLogin(true);
     onAuthStateChanged(auth, (user) => {
       if (user?.email) {
         setUser(user);
@@ -56,11 +58,11 @@ const useFirebase = () => {
         //   console.log(idToken);
         //   localStorage.setItem(idToken);
         // });
-      } else {
       }
-      setLoader(false);
+      setIsLogin(false);
     });
   }, [auth]);
+
   const logOut = () => {
     signOut(auth)
       .then(() => {
@@ -73,7 +75,7 @@ const useFirebase = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://morning-retreat-22291.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("admin", data.admin);
@@ -128,7 +130,7 @@ const useFirebase = () => {
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
     console.log("save user");
-    fetch("http://localhost:5000/users", {
+    fetch("https://morning-retreat-22291.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -144,6 +146,8 @@ const useFirebase = () => {
     user,
     setUser,
     loader,
+    isLogin,
+    setIsLogin,
     setLoader,
     error,
     setError,

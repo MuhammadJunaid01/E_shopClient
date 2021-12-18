@@ -13,7 +13,7 @@ const Myorder = () => {
     const confirm = window.confirm("are you sure?");
     console.log("order canceld", id);
     if (confirm) {
-      fetch(`http://localhost:5000/myorder/${id}`, {
+      fetch(`https://morning-retreat-22291.herokuapp.com/myorder/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

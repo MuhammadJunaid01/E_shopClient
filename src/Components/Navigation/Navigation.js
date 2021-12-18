@@ -6,8 +6,15 @@ import UseAuth from "./../../hooks/useAuth/UseAuth";
 const Navigation = () => {
   // const [myorder, setMyorder] = useState([]);
 
-  const { user, logOut, myorder, readMore, setReadMore, handlereadMore } =
-    UseAuth();
+  const {
+    user,
+    admin,
+    logOut,
+    myorder,
+    readMore,
+    setReadMore,
+    handlereadMore,
+  } = UseAuth();
 
   return (
     <div>
@@ -33,6 +40,12 @@ const Navigation = () => {
               <Link className="link" to="/kids">
                 Kids
               </Link>
+              {admin && (
+                <Link className="link" to="/dashboard">
+                  Dashboard
+                </Link>
+              )}
+
               {user?.email ? (
                 ""
               ) : (

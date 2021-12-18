@@ -13,6 +13,8 @@ import Home from "./Components/home/Home";
 import MyAccount from "./Components/myAccount/MyAccount";
 import Myorder from "./Components/muorder/Myorder";
 import Payment from "./Components/pament/Payment";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -28,11 +30,14 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/detail/:id">
+            <PrivateRoute path="/detail/:id">
               <DetailPage />
-            </Route>
+            </PrivateRoute>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/frofile">
               <MyAccount />

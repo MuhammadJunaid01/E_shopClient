@@ -1,0 +1,19 @@
+.dashBoardLit {
+  background-color: cadetblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+.dashBoardLit ul li {
+  list-style-type: none;
+}
+.dashBoardLit Link {
+  color: white;
+}
+.dashboardLink {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+.dashboardLink:hover {
+  color: black;
+}
