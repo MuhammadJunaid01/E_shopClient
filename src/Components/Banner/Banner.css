@@ -1,0 +1,9 @@
+.bannerImage {
+  height: 570px;
+}
+
+@media (min-width: 300px) and (max-width: 648px) {
+  .bannerImage {
+    height: 300px;
+  }
+}

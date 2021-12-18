@@ -1,0 +1,15 @@
+.mensClothContainer {
+  padding: 50px;
+}
+.mensClothInfo {
+  text-align: center;
+}
+.mensClothImage {
+  height: 200px;
+}
+.loader {
+  text-align: center;
+}
+.viewDetail {
+  width: 100%;
+}

@@ -1,0 +1,29 @@
+.link {
+  text-decoration: none;
+  margin-right: 30px;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+.link:hover {
+  color: black;
+}
+.frofileInav {
+  margin-left: 70px;
+}
+.frofilenav i {
+  cursor: pointer;
+  margin: 0px 10px;
+}
+.userImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (min-width: 300px) and (max-width: 648px) {
+  .link {
+    text-align: center;
+  }
+}
